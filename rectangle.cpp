@@ -15,6 +15,10 @@ Rectangle::Rectangle(float width, float height, int bottomLeftX, int bottomLeftY
 {
 }
 
+Rectangle::~Rectangle()
+{
+}
+
 float Rectangle::getWidth() const
 {
     return width;

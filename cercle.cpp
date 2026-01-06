@@ -16,6 +16,10 @@ Cercle::Cercle(float radius, int centerPositionX, int centerPositionY)
 {
 }
 
+Cercle::~Cercle()
+{
+}
+
 float Cercle::getRadius() const
 {
     return radius;

@@ -14,6 +14,10 @@ Carre::Carre(float sideLength, int bottomLeftX, int bottomLeftY)
 {
 }
 
+Carre::~Carre()
+{
+}
+
 float Carre::getSideLength() const
 {
     return sideLength;
