@@ -11,6 +11,7 @@ class Carre : public Forme
         int bottomLeftY;
     public:
         Carre(float sideLength, int bottomLeftX, int bottomLeftY);
+        ~Carre();
         float getSideLength() const;
         float setSideLength(float newSideLength);
         float getArea() const;

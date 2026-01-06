@@ -12,6 +12,7 @@ class Rectangle : public Forme
         int bottomLeftY;
     public:
         Rectangle(float width, float height, int bottomLeftX, int bottomLeftY);
+        ~Rectangle();
         float getWidth() const;
         void setWidth(float newWidth);
         float getHeight() const;

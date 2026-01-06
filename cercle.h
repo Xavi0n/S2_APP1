@@ -13,6 +13,7 @@ private:
 
 public:
     Cercle(float radius, int CenterPositionX, int CenterPositionY);
+    ~Cercle();
     float getRadius() const;
     float setRadius(float newRadius);
     float getArea() const;
