@@ -15,8 +15,8 @@ public:
     Cercle(float radius, int CenterPositionX, int CenterPositionY);
     float getRadius() const;
     float setRadius(float newRadius);
-    float area() const;
-    float circumference() const;
+    float getArea() const;
+    float getCircumference() const;
     void getCenter() const;
     void setCenter(int newCenterPositionX, int newCenterPositionY);
 };

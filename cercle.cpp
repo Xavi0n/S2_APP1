@@ -27,13 +27,13 @@ float Cercle::setRadius(float newRadius)
     return radius;
 }
 
-float Cercle::area() const
+float Cercle::getArea() const
 {
     float area = PI * radius * radius;
     return area;
 }
 
-float Cercle::circumference() const
+float Cercle::getCircumference() const
 {
     float circumference = 2 * PI * radius;
     return circumference;
@@ -48,4 +48,5 @@ void Cercle::setCenter(int newCenterPositionX, int newCenterPositionY)
 {
     centerPositionX = newCenterPositionX;
     centerPositionY = newCenterPositionY;
+    std::cout << "Center Position: (" << centerPositionX << ", " << centerPositionY << ")" << std::endl;
 }
