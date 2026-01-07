@@ -43,8 +43,14 @@ class Vector
         Vector();
         ~Vector();
 
-        int getSize() const;
-        int getCapacity() const;
+        int getSize() const
+        {
+            return size_;
+        }
+        int getCapacity() const
+        {
+            return capacity_;
+        }      
 
         void addElement(const T& element);
         void removeElement(int index);
