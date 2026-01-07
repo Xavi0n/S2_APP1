@@ -69,7 +69,7 @@ bool Couche::RemoveShape()
 }
 
 // A completer
-//int Couche::GetShape() const
+//int Couche::GetShape(char VecIndex) const
 //{
     //Elle permet d’obtenir une forme stockée. La forme à obtenir est spécifiée par son index dans le vecteur.
     //Si l’opération est une réussite, alors la valeur de retour est le pointeur sur la forme en question. 

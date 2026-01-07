@@ -27,7 +27,7 @@ class Couche
 		//int storeShapes();
 		bool AddShape();
 		bool RemoveShape();
-		//int GetShape() const;
+		//int GetShape(int VecIndex) const;
 		float GetTotalArea() const;
 		bool MoveLayer(int deltaX, int deltaY);
 		bool ResetLayer();
