@@ -16,23 +16,26 @@
 #define ACTIVE 1
 #define INACTIVE 2
 
+#include "vecteur.h" 
+
 class Couche
 {
 	private:
+		Vector VectorCouche;
 		unsigned char State;
 		float totalArea;
 	public:
 		Couche();
 		~Couche();
 		//int storeShapes();
-		bool AddShape();
-		bool RemoveShape();
-		//int GetShape(int VecIndex) const;
-		float GetTotalArea() const;
+		bool AddShape(forme* Shape);
+		int RemoveShape(int index);
+		Forme* GetShape(int VecIndex) ;
+		double GetTotalArea();
 		bool MoveLayer(int deltaX, int deltaY);
 		bool ResetLayer();
-		bool SetState(unsigned char newState);
-		//DisplayLayer();
+		bool SetState(int newState);
+		void DisplayLayer(std::ostream& out);    
 	unsigned char State;
 };
 
