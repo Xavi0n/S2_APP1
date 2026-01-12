@@ -1,19 +1,19 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
-template <typename T>
+#include "forme.h"
 
 class Vector
 {
     private:
         int size_;                      //Amount of elements currently stored
         int capacity_;                  //Maximum amount of elements that can be stored without realocating
-        T* data_;                       //Pointer to the array of elements (can be any type since we are using a template)
+        Forme** data_;                       //Pointer to the array of elements (can be any type since we are using a template)
 
         void resize()   //Function to reallocate memory when capacity is exceeded
         {
-            int newCapacity = (capacity_ == 0) ? 1 : capacity * 2; // au cas ou capacity == 0
-            T* newData = new T[newCapacity];
+            int newCapacity = (capacity_ == 0) ? 1 : capacity_ * 2; // au cas ou capacity == 0
+            Forme* newData = new Forme*[newCapacity];
             for (int i = 0; i < size_; ++i)
             {
                 newData[i] = data_[i];
@@ -27,7 +27,7 @@ class Vector
         {
             if (size_ < capacity_)
             {
-                T* newData = new T[size_];
+                Forme* newData = new Forme*[size_];
                 for (int i = 0; i < size_; ++i)
                 {
                     newData[i] = data_[i];
@@ -39,9 +39,10 @@ class Vector
         }
 
     public:
-        Vector() : data_(nullptr), size_(0), capacity_(1);
+        Vector() : data_(nullptr), size_(0), capacity_(1){}
         ~Vector(){
             delete[] data_;
+            data_ = nullptr;
         }
 
         int getSize() const
@@ -63,13 +64,14 @@ class Vector
         }
 
 
-        bool removeElement(int index);
+        bool removeElement(int index)
         {
             if(index >= size_)
             {
                 return 0; //index n'est pas dans le scope du tableau
             }
-            data_[index] = 0;
+            delete data_[index];   // Libère l'objet pointé
+            data_[index] = nullptr; // Met le pointeur à nullptr
             return 1;
 
         }
@@ -77,14 +79,20 @@ class Vector
 
         void deleteData()
         {
+            for (int i = 0; i < size_; ++i)
+            {
+                delete data_[i]; // libère chaque Forme*
+                data_[i] = nullptr;
+            }
+            delete[] data_;
+            data_ = nullptr;
             size_ = 0;
             capacity_ = 0;
-            delete[] data_;
         }
 
-        bool VecteurUnused()
+        bool VecteurUnused() const
         {
-            if(size == 0)
+            if(size_ == 0)
             {
                 return 1;
             }
@@ -94,20 +102,27 @@ class Vector
             }
         }
 
-        bool getData(int index)
+        T getData(int index)
         {
             if(index >= size_)
             {
                 return nullptr; //index n'est pas dans le scope du tableau
             }
-            return data_[Index];
+            return data_[index];
         }
 
         void printData (std::ostream& out)
         {
-            for (int i = 0; i <= size_; ++i) 
+            for (int i = 0; i < size_; ++i) 
             {
-                out << data[i] << " ";
+                if (data_[i] != nullptr)
+                {
+                    out << *(data_[i]) << " "; // Supposons que Forme a un opérateur<<
+                }
+                else
+                {
+                    out << "[vide] ";
+                }
             }
             out << std::endl;
         }
